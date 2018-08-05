@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<title>exQseme</title>
+    
+<link rel="stylesheet" type="text/css" href="styles/style.css">
+<link rel="stylesheet" type="text/css" href="styles/skin.css">
+<link rel="stylesheet" type="text/css" href="styles/framework.css">
+<link rel="stylesheet" type="text/css" href="styles/ionicons.min.css">
+    
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript" src="scripts/plugins.js"></script>
+<script type="text/javascript" src="scripts/custom.js"></script>
+<script type="text/javascript">
+	function selectDeterminant(determinant) {
+		//window.localStorage.setItem("user-determinant", determinant);
+		window.location.href="user-feedback.html";
+	}
+</script>
+</head>
+
+<body>
+<div id="page-transitions">
+	
+	<div class="header header-logo-center header-light">
+		<a href="user-checkin.html" class="header-icon header-icon-1"> <i class="interest-first-icon ion-ios-arrow-back"></i> </a>
+		<a href="index.html" class="header-logo"></a>  
+	</div>
+	
+	<div id="page-content" class="page-content vertical-bg-0">	
+		<div id="page-content-scroll" class="header-clear-large"><!--Enables this element to be scrolled --> 
+
+			<div class="page-interests">
+				<a href="#" class="interest-box transparent-background bg-blue-dark animate-zoom" onClick="selectDeterminant('Atmosphere')">
+					<strong>Atmosphere</strong>
+					<em>The location is uncomfortable. Ex: temperature, cleanliness, noise.</em>
+					<i class="interest-first-icon ion-ios-gear-outline"></i>
+				</a>            
+				<a href="#" class="interest-box transparent-background bg-red-dark animate-zoom animate-delay-50" onClick="selectDeterminant('Employees')">
+					<strong>Employees</strong>
+					<em>A problem with a staff member. Ex: Slow service, rude, unhelpful.</em>
+					<i class="interest-first-icon ion-ios-football"></i>
+					<i class="interest-second-icon hide-interest-icon ion-checkmark"></i>
+				</a>            
+				<a href="#" class="interest-box transparent-background bg-orange-dark animate-zoom animate-delay-100" onClick="selectDeterminant('Product')">
+					<strong>Product or Service</strong>
+					<em>The product or service does not meet expectations. Ex: Price, quality, reliability.</em>
+					<i class="interest-first-icon ion-fork"></i>
+					<i class="interest-second-icon hide-interest-icon ion-checkmark"></i>
+				</a>            
+				<a href="#" class="interest-box transparent-background bg-magenta-dark animate-zoom animate-delay-150" onClick="selectDeterminant('Driving')">
+					<strong>Driving</strong>
+					<em>BMW, Audi, Formula 1, Nascar, Drag Racing, Circuit Racing, Off Road, Indie 5000</em>
+					<i class="interest-first-icon ion-android-car"></i>
+					<i class="interest-second-icon hide-interest-icon ion-checkmark"></i>
+				</a>            
+				<a href="#" class="interest-box transparent-background bg-teal-dark animate-zoom animate-delay-200" onClick="selectDeterminant('Social')">
+					<strong>Social</strong>
+					<em>Twitter, Facebook, Dribbble, LinkedIn, Google Plus, Pinterest, Behance, iCloud, Hangouts</em>
+					<i class="interest-first-icon ion-android-share-alt"></i>
+					<i class="interest-second-icon hide-interest-icon ion-checkmark"></i>
+				</a>            
+				
+			</div>
+			<div class="page-overlay overlay-dark"></div>
+		</div>  
+	</div>
+
+	<a href="#" class="back-to-top-badge"><i class="ion-ios-arrow-up"></i></a>
+
+	<div class="share-bottom share-light">
+		<h3>Share Page</h3>
+		<div class="share-socials-bottom">
+			<a href="https://www.facebook.com/sharer/sharer.php?u=http://www.themeforest.net/">
+				<i class="ion-social-facebook facebook-bg"></i>
+				Facebook
+			</a>
+			<a href="https://twitter.com/home?status=Check%20out%20ThemeForest%20http://www.themeforest.net">
+				<i class="ion-social-twitter twitter-bg"></i>
+				Twitter
+			</a>
+			<a href="https://plus.google.com/share?url=http://www.themeforest.net">
+				<i class="ion-social-googleplus google-bg"></i>
+				Google
+			</a>
+			<a href="https://pinterest.com/pin/create/button/?url=http://www.themeforest.net/&media=https://0.s3.envato.com/files/63790821/profile-image.jpg&description=Themes%20and%20Templates">
+				<i class="ion-social-pinterest-outline pinterest-bg"></i>
+				Pinterest
+			</a>
+			<a href="sms:">
+				<i class="ion-ios-chatboxes-outline sms-bg"></i>
+				Text
+			</a>
+			<a href="mailto:?&subject=Check this page out!&body=http://www.themeforest.net">
+				<i class="ion-ios-email-outline mail-bg"></i>
+				Email
+			</a>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+</body>
