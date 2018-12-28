@@ -1,12 +1,15 @@
+var messagesTimer;
+
 $(document).ready(function(){      
     'use strict'
-	    
+
     function init_template(){
 		
 		var scroll_animations = 1; //1 = Automatic //2 = Disabled //3 = Manual Classes
 
 		var sidebar_effect = 'over' /* push, over sidebar effect */
 		var sidebar_submenu_numbers = 'false' /* set true to show menu numbers instead of + icon */
+
 
 		if(sidebar_submenu_numbers ==='true'){$('.menu-options').addClass('submenu-numbers');}
 		if(sidebar_submenu_numbers ==='false'){$('.menu-options').addClass('no-submenu-numbers');}
@@ -994,3 +997,405 @@ $(document).ready(function(){
     });
     
 });
+
+
+function admin_wait_counter(start_date) {
+	now = new Date();
+	countTo = new Date(start_date.replace(/-/g,'/'));
+	difference = (now-countTo);
+	console.log(start_date+" vs "+difference);
+	hours=Math.floor((difference%(60*60*1000*24))/(60*60*1000)*1);
+	mins=Math.floor(((difference%(60*60*1000*24))%(60*60*1000))/(60*1000)*1);
+	secs=Math.floor((((difference%(60*60*1000*24))%(60*60*1000))%(60*1000))/1000*1);
+	document.getElementById("admin-longest-wait-container").innerHTML = hours+" Hours "+mins+" Minutes "+secs+" Seconds";
+	if(mins > 10) {
+		document.getElementById("admin-longest-wait-container").style.color = "red";
+	}
+	else {
+		document.getElementById("admin-longest-wait-container").style.color = "green";
+	}
+	clearTimeout(admin_wait_counter.to);
+	admin_wait_counter.to=setTimeout(function(){ admin_wait_counter(start_date); },1000);
+}
+
+
+
+
+function admin_get_session_list() {
+	var uid = window.localStorage.getItem('user-id');
+	$.post('http://www.exqsme.com/mobile/1.0/admin_get_session_list.php', {uid:uid}, function(dataContent) {
+		var resarr = dataContent.split(",|,");
+		if(resarr[0] == "Nothing") {
+			document.getElementById("admin-no-feedback-container").style.display = "";
+		}
+		else {
+			document.getElementById("admin-no-feedback-container").style.display = "none";
+	        if(resarr[1] == "0") { $("admin-longest-wait-container").html("All Set! No messages waiting."); } else { admin_wait_counter(resarr[1]); }
+	        $("#admin-app-session-list").html(resarr[2]);
+	    }
+
+        
+    });
+}
+function get_session_list() {
+	var uid = window.localStorage.getItem('user-id');
+	$.post('http://www.exqsme.com/mobile/1.0/get_session_list.php', {uid:uid}, function(dataContent) {
+        var resarr = dataContent.split(",|,");
+		if(resarr[0] == "Nothing") {
+			document.getElementById("user-no-feedback-container").style.display = "";
+		}
+		else {
+			document.getElementById("user-no-feedback-container").style.display = "none";
+        	$("#app-session-list").html(resarr[1]);
+       	}
+    });
+}
+
+function get_wallet() {
+	var uid = window.localStorage.getItem('user-id');
+	$.post('http://www.exqsme.com/mobile/1.0/get_wallet.php', {uid:uid}, function(dataContent) {
+        var resarr = dataContent.split(",|,");
+		if(resarr[0] == "Nothing") {
+			document.getElementById("user-empty-wallet-container").style.display = "";
+		}
+		else {
+			document.getElementById("user-empty-wallet-container").style.display = "none";
+        	$("#user-wallet-div").html(resarr[1]);
+       	}
+    });
+}
+
+function admin_closeSession() {
+	var session_id = window.localStorage.getItem("admin-feedback-session-id");
+	$.post('http://www.exqsme.com/mobile/1.0/admin_close_session.php', {session_id:session_id}, function(dataContent) {
+        var resarr = dataContent.split(",|,");
+        if(resarr[0] == "Closed") { 
+        	window.localStorage.setItem("admin-feedback-session-status", "Closed"); 
+        	$("#admin-feedback-message-area").append(resarr[1]);
+
+    	} 
+    	else { 
+    		window.localStorage.setItem("admin-feedback-session-status", "Open"); 
+    	}
+        
+    });
+}
+
+function closeSession() {
+	var session_id = window.localStorage.getItem("user-feedback-session-id");
+	$.post('http://www.exqsme.com/mobile/1.0/user_close_session.php', {session_id:session_id}, function(dataContent) {
+        var resarr = dataContent.split(",|,");
+        if(resarr[0] == "Closed") { 
+        	window.localStorage.setItem("feedback-session-status", "Closed"); 
+        	$("#feedback-message-area").append(resarr[1]);
+
+    	} 
+    	else { 
+    		window.localStorage.setItem("feedback-session-status", "Open"); 
+    	}
+        
+    });
+}
+
+function admin_get_messages() {
+	var session_id = window.localStorage.getItem("admin-feedback-session-id");
+	$.post('http://www.exqsme.com/mobile/1.0/admin_get_messages.php', {session_id:session_id}, function(dataContent) {
+        var resarr = dataContent.split(",|,");
+        if(resarr[0] == "Closed") { window.localStorage.setItem("admin-feedback-session-status", "Closed"); } else { window.localStorage.setItem("admin-feedback-session-status", "Open"); }
+        $("#admin-feedback-message-area").html(resarr[1]);
+        admin_scroll_messages();
+    });
+}
+
+function admin_get_messages_gifts() {
+	var session_id = window.localStorage.getItem("admin-feedback-session-id");
+	$.post('http://www.exqsme.com/mobile/1.0/admin_get_messages_gifts.php', {session_id:session_id}, function(dataContent) {
+        
+        
+        $("#admin-message-gifts-div").html(dataContent);
+        
+    });
+}
+
+function admin_get_messages_new() {
+	var session_id = window.localStorage.getItem("admin-feedback-session-id");
+	$.post('http://www.exqsme.com/mobile/1.0/admin_get_messages_new.php', {session_id:session_id}, function(dataContent) {
+        var resarr = dataContent.split(",|,");
+        if(resarr[0] == "Yes") { 
+        	if(resarr[1] == session_id) {
+	        	$("#admin-feedback-message-area").append(resarr[2]);
+	        	admin_scroll_messages();
+	        }
+        }
+     
+    });
+}
+
+function scroll_messages() {
+    var emt = document.getElementById("feedback-message-area");
+    emt.scrollTop = emt.scrollHeight;
+}
+
+function admin_scroll_messages() {
+    var emt = document.getElementById("admin-feedback-message-area");
+    emt.scrollTop = emt.scrollHeight;
+}
+
+function get_messages() {
+	var session_id = window.localStorage.getItem("user-feedback-session-id");
+	$.post('http://www.exqsme.com/mobile/1.0/get_messages.php', {session_id:session_id}, function(dataContent) {
+        var resarr = dataContent.split(",|,");
+        if(resarr[0] == "Closed") { window.localStorage.setItem("feedback-session-status", "Closed"); } else { window.localStorage.setItem("feedback-session-status", "Open"); }
+        $("#feedback-message-area").html(resarr[1]);
+        scroll_messages();
+    });
+}
+
+function get_messages_new() {
+	var session_id = window.localStorage.getItem("user-feedback-session-id");
+	$.post('http://www.exqsme.com/mobile/1.0/get_messages_new.php', {session_id:session_id}, function(dataContent) {
+        var resarr = dataContent.split(",|,");
+        if(resarr[0] == "Yes") { 
+        	if(resarr[1] == session_id) {
+	        	$("#feedback-message-area").append(resarr[2]);
+	        	scroll_messages();
+	        }
+        }
+     
+    });
+}
+
+function admin_sendMessage(type, system_message) {
+	var session_status = window.localStorage.getItem("admin-feedback-session-status");
+	if(session_status != "Closed") {
+		if(type != "Gift") {
+			var txt = document.getElementById('admin-feedback-message-new').value;
+		}
+		else {
+			var txt = system_message;
+		}
+		
+		var session_id = window.localStorage.getItem("admin-feedback-session-id");
+		var uid = window.localStorage.getItem('user-id');
+
+		$.post('http://www.exqsme.com/mobile/1.0/admin_submit_message.php', {session_id:session_id, uid:uid, message:txt, type:type }, function(dataContent) {
+	        var resarr = dataContent.split(",|,");
+	        if(resarr[0] == "No") {
+	            alert("There was an error sending your message. Please try again.");
+	           
+	        }
+	        else {
+	        	document.getElementById("admin-feedback-message-new").value = "";
+	        	if(type == "Location Request") {
+	        		$("#admin-feedback-message-area").append('<p class="speach-right bg-green-light">Location Green Screen Request Sent</p><div class="clear"></div>');
+	        	}
+	        	else if(type == "Gift") {
+	        		var sysarr = system_message.split(",|,");
+	        		$("#admin-feedback-message-area").append('<p class="speach-right bg-blue-light"><i class="icon-bg ion-ios-pricetag"></i>'+sysarr[1]+'</p><div class="clear"></div>');
+	        	}
+	        	else {
+	        		$("#admin-feedback-message-area").append('<p class="speach-right bg-blue-light">'+txt+'</p><div class="clear"></div>');
+	        	}
+	        	admin_scroll_messages();
+	        }
+	    });
+	}
+}
+
+
+function sendMessage(system_txt) {
+	var session_status = window.localStorage.getItem("feedback-session-status");
+	if(session_status != "Closed") {
+		if(system_txt != "") { //this allows the system to send messages (such as the green screen activation, that is not from the user's chat window)
+			var txt = system_txt;
+		}
+		else {
+			var txt = document.getElementById('feedback-message-new').value;
+		}
+		var session_id = window.localStorage.getItem("user-feedback-session-id");
+		var uid = window.localStorage.getItem('user-id');
+
+		$.post('http://www.exqsme.com/mobile/1.0/submit_message.php', {session_id:session_id, uid:uid, message:txt }, function(dataContent) {
+	        var resarr = dataContent.split(",|,");
+	        if(resarr[0] == "No") {
+	            alert("There was an error sending your message. Please try again.");
+	           
+	        }
+	        else {
+	        	document.getElementById("feedback-message-new").value = "";
+	        	$("#feedback-message-area").append('<p class="speach-right bg-blue-light">'+txt+'</p><div class="clear"></div>');
+	        	scroll_messages();
+	        }
+	    });
+	}
+}
+
+function getProfile() {
+	var location = window.localStorage.getItem("user-feedback-location");
+	$.post('http://www.exqsme.com/mobile/1.0/get_feedback_profile.php', {business_id:location }, function(dataContent) {
+        var resarr = dataContent.split(",|,");
+        if(resarr[0] == "Yes") {
+            $("#feedback-manager-profile").html(resarr[1]);
+           
+        }
+    });
+    $.post('http://www.exqsme.com/mobile/1.0/get_feedback_cover.php', {business_id:location }, function(dataContent) {
+        var resarr = dataContent.split(",|,");
+        if(resarr[0] == "Yes") {
+            $("#feedback-cover-profile").html(resarr[1]);
+           
+        }
+    });
+}
+
+function selectLocation(location) {
+		window.localStorage.setItem("user-feedback-location", location);
+	    window.location.href="user-feedback.html";
+}
+
+function admin_selectSession(session_id) {
+		window.localStorage.setItem("admin-feedback-session-id", session_id);
+		window.location.href="admin-chat.html";
+}
+
+function selectSession(session_id) {
+		window.localStorage.setItem("user-feedback-session-id", session_id);
+		window.location.href="user-chat.html";
+}
+
+function submitFeedback(message) {
+	var uid = window.localStorage.getItem('user-id');
+	var emotion = window.localStorage.getItem("user-feedback-emotion");
+	var location = window.localStorage.getItem("user-feedback-location");
+	var determinant = window.localStorage.getItem("user-feedback-determinant");
+
+	$.post('http://www.exqsme.com/mobile/1.0/submit_feedback.php', {uid:uid, emotion:emotion, location:location, determinant:determinant, message:message}, function(dataContent) {
+        var resarr = dataContent.split(",|,");
+        if(resarr[0] == "Yes") {
+            alert("Your feedback has been sent directly to the manager.");
+            window.location.href='user-home.html';
+           
+        }
+        else {
+        	alert("Oops! Something went wrong sending your feedback. Please try again.");
+        }
+        
+    });
+}
+
+function login() {
+	var email = document.getElementById("login-email").value;
+	var password = document.getElementById("login-pw").value;
+
+	if(email == "Manager") {
+		window.localStorage.setItem("user-id", "1");
+		window.location.href='admin-home.html';
+	}
+	else if(email == "Consumer") {
+		window.localStorage.setItem("user-id", "2");
+		window.location.href='user-home.html';
+	}
+	else {
+		alert("Invalid login credentials. Please try again.");
+	}
+	
+}
+
+function logout() {
+	window.localStorage.setItem("user-id", "");
+	window.location.href='index.html';
+}
+
+function admin_logout() {
+	window.localStorage.setItem("user-id", "");
+	window.location.href='index.html';
+}
+/* Old google script -- can delete if decide not to use google graphs
+function drawBarChart() {
+
+      // Create the data table.
+  
+     var data = google.visualization.arrayToDataTable([
+          ['Category', 'Happy', 'Dissatisfied'],
+          ['Atmosphere', 10, 25],
+          ['Product/Service', 7, 20],
+          ['Employee', 12, 30],
+          ['Security', 3, 12]
+        ]);
+
+        var options = {
+        	width: 800,
+        	height: 600,
+        	legend: { position: 'top', maxLines: 3 },
+        	isStacked: true,
+          
+          bars: 'horizontal' // Required for Material Bar Charts.
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('bar-chart-div'));
+      	chart.draw(data, options);
+}
+*/
+
+function resolved_issue() {
+	var session_status = window.localStorage.getItem("feedback-session-status");
+	if(session_status != "Closed") {
+		document.getElementById("modal-overlay").style.display = "block";
+		document.getElementById("modal").style.display = "block";
+	}
+	else {
+		alert("This session is already closed.");
+	}
+}
+
+function selectFinalEmotion(rating) {
+	document.getElementById("modal-overlay").style.display = "none";
+	document.getElementById("modal").style.display = "none";
+
+	var sid = window.localStorage.getItem("user-feedback-session-id");
+
+	$.post('http://www.exqsme.com/mobile/1.0/submit_final_emotion.php', {session_id:sid, final_emotion:rating}, function(dataContent) {
+        var resarr = dataContent.split(",|,");
+        if(resarr[0] == "Yes") {
+        	alert("Closing session...");
+        	closeSession();
+           
+        }
+        
+    });
+
+}
+
+function drawBarChart() {
+	var trace1 = {
+	  x: ['Atmosphere', 'Product', 'Employee', 'Security'],
+	  y: [20, 14, 23, 5],
+	  name: 'Dissatisifed',
+	  type: 'bar'
+	};
+
+	var trace2 = {
+	  x: ['Atmosphere', 'Product', 'Employee', 'Security'],
+	  y: [10, 8, 9, 3],
+	  name: 'Happy',
+	  type: 'bar'
+	};
+
+	var data = [trace1, trace2];
+
+	var layout = {barmode: 'stack', showlegend: false};
+
+	Plotly.newPlot('bar-chart-div', data, layout, {displayModeBar: false});
+}
+
+function business_step1_submit() {
+	window.location.href='new_business2.html';
+}
+
+function business_step2_submit() {
+	window.location.href='new_business3.html';
+}
+
+function business_step3_submit() {
+	window.location.href='index.html';
+}

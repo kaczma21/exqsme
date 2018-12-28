@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-<title>esQseme</title>
+<title>exQsme</title>
     
 <link rel="stylesheet" type="text/css" href="styles/style.css">
 <link rel="stylesheet" type="text/css" href="styles/skin.css">
@@ -18,28 +18,31 @@
 <script type="text/javascript" src="scripts/custom.js"></script>
 </head>
 
-<body>
+<body onLoad="getProfile()">
 <div id="page-transitions">
 	
 	<div class="header header-logo-center header-light">
-		<a href="user-determinants.html" class="header-icon header-icon-1"> <i class="interest-first-icon ion-ios-arrow-back"></i> </a>
+		<a href="#" onClick="window.location.href='user-checkin.html'" class="header-icon header-icon-1"> <i class="interest-first-icon ion-ios-arrow-back"></i> </a>
 		<a href="index.html" class="header-logo"></a>  
 	</div>
 	
 	<div id="page-content" class="page-content">	
 		<div id="page-content-scroll" class="header-clear"><!--Enables this element to be scrolled --> 
 
-		   
-		   <div class="content">
-				<div class="one-half-responsive" style="margin-top: 25px;">
-					<div class="container heading-style">
-						<h4 class="heading-title">Let's Make It Right!</h4>
-						<i class="ion-ios-email-outline heading-icon"></i>
-						<div class="line bg-black"></div>
-						<p class="heading-subtitle">
-							Please provide some details to the manager so they can make it right, right now.
-						</p>
+			<div class="profile-page-2 full-bottom">
+				<div id="feedback-cover-profile"></div>
+				
+				<div class="content">
+					<div class="profile-page-2-header">
+						<div id="feedback-manager-profile">
+						
+						</div>
+						
 					</div>
+				</div>
+
+					
+					
 					<div class="container no-bottom">
 						<div class="contact-form no-bottom"> 
 							<div class="formSuccessMessageWrap" id="formSuccessMessageWrap">
@@ -52,7 +55,7 @@
 								</div>
 							</div>
 
-							<form action="php/contact.php" method="post" class="contactForm" id="contactForm">
+							<form action="#" class="contactForm" id="feedbackForm">
 								<fieldset>
 									
 									<div class="formValidationError bg-red-dark" id="contactMessageTextareaError">
@@ -65,23 +68,25 @@
 										<textarea name="contactMessageTextarea" class="contactTextarea requiredField" id="contactMessageTextarea"></textarea>
 									</div>
 									<div class="formSubmitButtonErrorsWrap contactFormButton">
-										<input type="submit" class="buttonWrap button button-green contactSubmitButton" id="contactSubmitButton" value="Send Message" data-formId="contactForm"/>
+										<input type="submit" class="buttonWrap button button-green contactSubmitButton" id="contactSubmitButton" value="Send Message" data-formId="contactForm" onClick="submitFeedback(document.getElementById('contactMessageTextarea').value)"/>
 									</div>
 								</fieldset>
 							</form>       
 						</div>
 					</div>
 				</div>
-				<div class="decoration hide-if-responsive"></div>
+
 				
 			</div>
-
+			
+			<div class="decoration decoration-margins"></div>
 			
 			
 
 		</div>  
 	</div>
 
-	
+	<a href="#" class="back-to-top-badge"><i class="ion-ios-arrow-up"></i></a>
+
 </div>
 </body>

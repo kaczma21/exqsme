@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+<title>exQseme</title>
+    
+<link rel="stylesheet" type="text/css" href="styles/style.css" />
+<link rel="stylesheet" type="text/css" href="styles/skin.css" />
+<link rel="stylesheet" type="text/css" href="styles/framework.css" />
+<link rel="stylesheet" type="text/css" href="styles/ionicons.min.css" />
+    
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript" src="scripts/plugins.js"></script>
+<script type="text/javascript" src="scripts/custom.js"></script>
+</head>
+
+<body>
+<div id="page-transitions">
+	
+	<div class="header header-logo-center header-light">
+		<a href="#" onClick="window.location.href='user-checkin.html'" class="header-icon header-icon-1"> <i class="interest-first-icon ion-ios-arrow-back"></i> </a>
+		<a href="index.html" class="header-logo"></a>  
+	</div>
+	
+	<div id="page-content" class="page-content vertical-bg-0">	
+		<div id="page-content-scroll" class="header-clear-large"><!--Enables this element to be scrolled --> 
+			<div class="container heading-style" style="margin-top: 25px;">
+				<h4 class="heading-title" style="color: white;">Select A Category</h4>
+
+				<div style="color: white;" class="decoration decoration-margins"></div>
+			</div> 
+
+			<div class="page-interests">
+				<a href="#" class="interest-box transparent-background bg-blue-dark animate-zoom" onClick="window.localStorage.setItem('user-feedback-determinant', 'Atmosphere');
+			window.location.href='user-feedback.html';">
+					<strong>Atmosphere</strong>
+					<em>The location is uncomfortable. Ex: temperature, cleanliness, noise.</em>
+					<i class="interest-first-icon ion-ios-gear-outline"></i>
+				</a>            
+				<a href="#" class="interest-box transparent-background bg-red-dark animate-zoom animate-delay-50" onClick="window.localStorage.setItem('user-feedback-determinant', 'Product');
+			window.location.href='user-feedback.html';">
+					<strong>Product or Service</strong>
+					<em>The product or service did not meet your expectations.</em>
+					<i class="interest-first-icon ion-ios-football"></i>
+					<i class="interest-second-icon hide-interest-icon ion-checkmark"></i>
+				</a>            
+				<a href="#" class="interest-box transparent-background bg-orange-dark animate-zoom animate-delay-100" onClick="window.localStorage.setItem('user-feedback-determinant', 'Employee');
+			window.location.href='user-feedback.html';">
+					<strong>Employee</strong>
+					<em>An employee was unavailable or did not meet your expectations.</em>
+					<i class="interest-first-icon ion-fork"></i>
+					<i class="interest-second-icon hide-interest-icon ion-checkmark"></i>
+				</a>            
+				
+				<a href="#" class="interest-box transparent-background bg-teal-dark animate-zoom animate-delay-200" onClick="window.localStorage.setItem('user-feedback-determinant', 'Security');
+			window.location.href='user-feedback.html';">
+					<strong>Security</strong>
+					<em>You are concerned for the safety of yourself or others.</em>
+					<i class="interest-first-icon ion-android-share-alt"></i>
+					<i class="interest-second-icon hide-interest-icon ion-checkmark"></i>
+				</a>            
+				
+			</div>
+			<div class="page-overlay overlay-dark"></div>
+		</div>  
+	</div>
+
+	<a href="#" class="back-to-top-badge"><i class="ion-ios-arrow-up"></i></a>
+</div>
+</body>
+</html>

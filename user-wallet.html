@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+<title>exQseme</title>
+    
+<link rel="stylesheet" type="text/css" href="styles/style.css" />
+<link rel="stylesheet" type="text/css" href="styles/skin.css" />
+<link rel="stylesheet" type="text/css" href="styles/framework.css" />
+<link rel="stylesheet" type="text/css" href="styles/ionicons.min.css" />
+    
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript" src="scripts/plugins.js"></script>
+<script type="text/javascript" src="scripts/custom.js"></script>
+
+</head>
+
+<body id="user-home">
+<div id="page-transitions">
+	
+	<div class="sidebars sidebars-light">
+		<div class="sidebar sidebar-left">
+			
+			<div class="menu-options icon-background no-submenu-numbers sidebar-menu">
+				<em class="menu-divider">Navigation</em>
+				<a class="active-item" data-sub="sidebar-sub-1" href="#"><i class="icon-bg bg-blue-dark ion-android-home"></i><span>Account Settings</span><strong class="plushide-animated"></strong></a>
+				<div class="submenu" id="sidebar-sub-1">
+					<a href="user-profile.html"><span>Change Login/Password</span></a>
+					<a href="user-privacy.html"><span>Privacy Settings</span></a>
+					<a href="#" onClick="logout()"><span>Logout</span></a>
+					
+				</div>
+				
+				<a href="user-contact.html"><i class="icon-bg bg-orange-light ion-edit"></i><span>Contact exQsme</span><i class="ion-record"></i></a>
+				<em class="menu-divider">Copyright <u class="copyright-year"></u>. All rights reserved</em>
+			</div>
+		</div> 
+		
+	</div>
+
+
+	<div class="header header-logo-center header-light">
+		<a href="#" class="header-icon header-icon-1 hamburger-animated open-sidebar-left"></a>
+		<a href="index.html" class="header-logo"></a>  
+	</div>
+	
+	<div class="footer-fixed footer-fixed-light">
+		<div class="menu-bottom-bar menu-bottom-bar-three menu-bottom-bar-text light-menu-bar flat-menu-bar full-bottom">
+					<a href="#" onClick="window.location.href='user-home.html'" class="border-green-dark"><i class="ion-ios-analytics"></i><em>Activity</em></a>
+					<a href="#" onClick="window.location.href='user-profile.html'" class="border-blue-dark"><i class="ion-ios-people"></i><em>Me</em></a>
+					<a href="#" onClick="window.location.href='user-wallet.html'" class="border-magenta-dark  selected-bottom-bar"><i class="ion-ios-pricetag"></i><em>Wallet</em></a>
+					<div class="clear"></div>
+				</div>                 
+	</div>
+	
+	<div id="page-content" class="page-content">	
+
+		<div id="page-content-scroll" class="header-clear"><!--Enables this element to be scrolled --> 
+
+			<div class="content">
+
+				<div id="user-empty-wallet-container" style="display: none;">
+					
+					<div class="content no-bottom">
+						<br><br>
+			        <div class="decoration"></div>
+
+			       	 <div class="column-home-center">
+			            <i class="ion-ios-pricetag color-green-dark"></i>
+			            <h5 class="thin">Your Wallet Is Empty</h5>
+			            <p>As you earn rewards, receive promotions, or are gifted discounts from managers, they will be placed in your wallet for easy access and safe keeping.</p>
+			          </div>
+
+			        
+			        <div class="decoration"></div>
+			      </div>
+				</div>
+				<div class="column-home-center">
+			            <div class="decoration"></div>
+			            
+			          </div>
+				<div class="page-userlist">
+					<div id="user-wallet-div">
+
+					</div>
+				</div>
+			
+				
+			</div>  
+		</div>
+
+	</div>
+	<a href="#" class="back-to-top-badge"><i class="ion-ios-arrow-up"></i></a>
+
+</div>
+</body>
+<script type="text/javascript">
+get_wallet();
+</script>
+</html>

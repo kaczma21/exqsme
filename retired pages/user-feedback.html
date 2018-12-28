@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<title>esQseme</title>
+    
+<link rel="stylesheet" type="text/css" href="styles/style.css">
+<link rel="stylesheet" type="text/css" href="styles/skin.css">
+<link rel="stylesheet" type="text/css" href="styles/framework.css">
+<link rel="stylesheet" type="text/css" href="styles/ionicons.min.css">
+    
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript" src="scripts/plugins.js"></script>
+<script type="text/javascript" src="scripts/custom.js"></script>
+
+<script type="text/javascript">
+function loadText() {
+	var emotion = window.localStorage.getItem("user-feedback-emotion");
+	if(emotion == "Happy") {
+		document.getElementById("heading-title").innerHTML = "We're Glad You're Happy!";
+		document.getElementById("heading-subtitle").innerHTML = "Let the manager know why you're happy so they know to keep up the good work."
+	}
+	else {
+		document.getElementById("heading-title").innerHTML = "Let's Make It Right!";
+		document.getElementById("heading-subtitle").innerHTML = "Please tell the manager why you're dissatisfied so they can make it right, right now."
+	}
+}
+</script>
+</head>
+
+<body onLoad="loadText()">
+<div id="page-transitions">
+	
+	<div class="header header-logo-center header-light">
+		<a href="#" onClick="window.location.href='user-determinants.html'" class="header-icon header-icon-1"> <i class="interest-first-icon ion-ios-arrow-back"></i> </a>
+		<a href="index.html" class="header-logo"></a>  
+	</div>
+	
+	<div id="page-content" class="page-content">	
+		<div id="page-content-scroll" class="header-clear"><!--Enables this element to be scrolled --> 
+
+		   
+		   <div class="content">
+				<div class="one-half-responsive" style="margin-top: 25px;">
+					<div class="container heading-style">
+						<h4 class="heading-title" id="heading-title"></h4>
+						<i class="ion-ios-email-outline heading-icon"></i>
+						<div class="line bg-black"></div>
+						<p class="heading-subtitle" id="heading-subtitle">
+							
+						</p>
+					</div>
+					<div class="container no-bottom">
+						<div class="contact-form no-bottom"> 
+							<div class="formSuccessMessageWrap" id="formSuccessMessageWrap">
+								<div class="notification-medium bg-green-light">
+									<h1>Message Sent!</h1>
+									<p>
+										We'll be back shortly!
+									</p>
+									<a href="#" class="hide-notification"><i class="fa fa-times"></i></a>
+								</div>
+							</div>
+
+							<form action="#" class="contactForm" id="feedbackForm">
+								<fieldset>
+									
+									<div class="formValidationError bg-red-dark" id="contactMessageTextareaError">
+										<p class="center-text uppercase small-text color-white">Message field is empty!</p>
+									</div>   
+									<div class="formFieldWrap">
+										
+									<div class="formTextareaWrap">
+										<label class="field-title contactMessageTextarea" for="contactMessageTextarea">Message: <span>(required)</span></label>
+										<textarea name="contactMessageTextarea" class="contactTextarea requiredField" id="contactMessageTextarea"></textarea>
+									</div>
+									<div class="formSubmitButtonErrorsWrap contactFormButton">
+										<input type="submit" class="buttonWrap button button-green contactSubmitButton" id="contactSubmitButton" value="Send Message" data-formId="contactForm" onClick="submitFeedback(document.getElementById('contactMessageTextarea').value)"/>
+									</div>
+								</fieldset>
+							</form>       
+						</div>
+					</div>
+				</div>
+				<div class="decoration hide-if-responsive"></div>
+				
+			</div>
+
+			
+			
+
+		</div>  
+	</div>
+
+	
+</div>
+</body>

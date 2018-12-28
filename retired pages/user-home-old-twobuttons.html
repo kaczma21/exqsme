@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+<title>exQseme</title>
+    
+<link rel="stylesheet" type="text/css" href="styles/style.css" />
+<link rel="stylesheet" type="text/css" href="styles/skin.css" />
+<link rel="stylesheet" type="text/css" href="styles/framework.css" />
+<link rel="stylesheet" type="text/css" href="styles/ionicons.min.css" />
+    
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript" src="scripts/plugins.js"></script>
+<script type="text/javascript" src="scripts/custom.js"></script>
+
+</head>
+
+<body id="user-home">
+<div id="page-transitions">
+	
+	<div class="sidebars sidebars-light">
+		<div class="sidebar sidebar-left">
+			
+			<div class="menu-options icon-background no-submenu-numbers sidebar-menu">
+				<em class="menu-divider">Navigation</em>
+				<a class="active-item" data-sub="sidebar-sub-1" href="#"><i class="icon-bg bg-blue-dark ion-android-home"></i><span>Account Settings</span><strong class="plushide-animated"></strong></a>
+				<div class="submenu" id="sidebar-sub-1">
+					<a href="user-profile.html"><span>Change Login/Password</span></a>
+					<a href="user-privacy.html"><span>Privacy Settings</span></a>
+					<a href="#" onClick="logout()"><span>Logout</span></a>
+					
+				</div>
+				
+				<a href="user-contact.html"><i class="icon-bg bg-orange-light ion-edit"></i><span>Contact exQsme</span><i class="ion-record"></i></a>
+				<em class="menu-divider">Copyright <u class="copyright-year"></u>. All rights reserved</em>
+			</div>
+		</div> 
+		
+	</div>
+
+
+	<div class="header header-logo-center header-light">
+		<a href="#" class="header-icon header-icon-1 hamburger-animated open-sidebar-left"></a>
+		<a href="index.html" class="header-logo"></a>  
+	</div>
+	
+	<div id="page-content" class="page-content">	
+		<div id="page-content-scroll" class="header-clear-large vertical-bg-0"><!--Enables this element to be scrolled --> 
+			<div class="page-interests">
+				<a href="#" class="interest-box transparent-background bg-blue-dark animate-zoom" onClick="selectEmotion('Happy')">
+					<strong>Happy</strong>
+					<em>Thank the manager for a great experience.</em>
+					<i class="interest-first-icon ion-happy"></i>
+				</a>            
+				<a href="#" class="interest-box transparent-background bg-red-dark animate-zoom animate-delay-50" onClick="selectEmotion('Dissatisfied')">
+					<strong>Dissatisfied</strong>
+					<em>Let the manager know what needs to change.</em>
+					<i class="interest-first-icon ion-sad"></i>
+					<i class="interest-second-icon hide-interest-icon ion-checkmark"></i>
+				</a>            
+				     
+				
+			</div>
+		</div>
+
+		<div id="page-content-scroll" class="header-clear"><!--Enables this element to be scrolled --> 
+
+			<div class="content">
+
+				<div id="user-no-feedback-container" style="display: none;">
+					
+					<div class="content no-bottom">
+			        <div class="decoration"></div>
+			        <h2 class="center-text thin small-bottom">You haven't contacted a manager yet</h2>
+			        <p class="center-text larger-text thin">
+			          Click Happy or Dissatisfied above to immediately get in touch with a manager while you're on site at their location. 
+			        </p>
+
+			        <div class="decoration deco-0 decoration-small"></div>
+
+			        <div class="one-half-responsive">
+			          <div class="column-home-center one-half">
+			            <i class="ion-ios-checkmark-outline color-green-dark"></i>
+			            <h5 class="thin">Immediate Responses</h5>
+			            <p>Your feedback is just like a text message to the manager</p>
+			          </div>
+			          <div class="column-home-center one-half last-column">
+			            <i class="ion-jet color-red-dark"></i>
+			            <h5 class="thin">Direct to Manager</h5>
+			            <p>Your messages go straight to the manager so the right person helps you, right now.</p>
+			          </div>
+			        </div>
+			        <div class="one-half-responsive last-column">
+			          <div class="column-home-center one-half ">
+			            <i class="ion-gear-a color-blue-dark"></i>
+			            <h5 class="thin">A Single App</h5>
+			            <p>exQsme works at many locations, in a single application.</p>
+			          </div>
+			          <div class="column-home-center one-half last-column ">
+			            <i class="ion-help-buoy color-orange-dark"></i>
+			            <h5 class="thin">It's Free</h5>
+			            <p>All of exQsme's powerful features, to you, for free.</p>
+			          </div>
+			        </div>
+			        <div class="decoration"></div>
+			      </div>
+				</div>
+				
+				<div class="page-userlist">
+					<div id="app-session-list">
+
+					</div>
+				</div>
+			
+				
+			</div>  
+		</div>
+
+	</div>
+	<a href="#" class="back-to-top-badge"><i class="ion-ios-arrow-up"></i></a>
+
+</div>
+</body>
+<script type="text/javascript">
+get_session_list();
+</script>
+</html>

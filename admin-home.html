@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+<title>exQseme</title>
+    
+<link rel="stylesheet" type="text/css" href="styles/style.css" />
+<link rel="stylesheet" type="text/css" href="styles/skin.css" />
+<link rel="stylesheet" type="text/css" href="styles/framework.css" />
+<link rel="stylesheet" type="text/css" href="styles/ionicons.min.css" />
+    
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript" src="scripts/plugins.js"></script>
+<script type="text/javascript" src="scripts/custom.js"></script>
+
+</head>
+
+<body id="admin-home">
+<div id="page-transitions">
+	
+	<div class="sidebars sidebars-light">
+		<div class="sidebar sidebar-left">
+			
+			<div class="menu-options icon-background no-submenu-numbers sidebar-menu">
+				<em class="menu-divider">Navigation</em>
+				<a class="active-item" data-sub="sidebar-sub-1" href="#"><i class="icon-bg bg-blue-dark ion-android-home"></i><span>Account Settings</span><strong class="plushide-animated"></strong></a>
+				<div class="submenu" id="sidebar-sub-1">
+					<a href="user-profile.html"><span>Change Login/Password</span></a>
+					<a href="user-privacy.html"><span>Privacy Settings</span></a>
+					<a href="#" onClick="admin_logout()"><span>Logout & Go Off Duty</span></a>
+					
+				</div>
+				
+				<a href="user-contact.html"><i class="icon-bg bg-orange-light ion-edit"></i><span>Contact exQsme</span><i class="ion-record"></i></a>
+				<em class="menu-divider">Copyright <u class="copyright-year"></u>. All rights reserved</em>
+			</div>
+		</div> 
+		
+	</div>
+
+
+	<div class="header header-logo-center header-light">
+		<a href="#" class="header-icon header-icon-1 hamburger-animated open-sidebar-left"></a>
+		<a href="index.html" class="header-logo"></a>  
+	</div>
+
+	<div class="footer-fixed footer-fixed-light">
+		<div class="menu-bottom-bar menu-bottom-bar-three menu-bottom-bar-text light-menu-bar flat-menu-bar full-bottom">
+					<a href="admin-statistics.html" class="border-green-dark"><i class="ion-ios-analytics"></i><em>Statistics</em></a>
+					<a href="admin-home.html" class="border-blue-dark selected-bottom-bar"><i class="ion-ios-email"></i><em>Sessions</em></a>
+					<a href="#" onClick="admin_logout()" class="border-magenta-dark"><i class="ion-gear-a"></i><em>Logout & Off Duty</em></a>
+					<div class="clear"></div>
+				</div>                 
+	</div>
+
+	
+	<div id="page-content" class="page-content">	
+		
+
+		<div id="page-content-scroll" class="header-clear"><!--Enables this element to be scrolled --> 
+
+			<div class="content">
+				<br>
+				<center>
+				<div class="review-2 container">
+						<h1><div id="admin-longest-wait-container"></div></h1>
+				</div>
+				</center>
+
+				<div id="admin-no-feedback-container" style="display: none;">
+					
+					<div class="content no-bottom">
+			        <div class="decoration"></div>
+			        <h2 class="center-text thin small-bottom">Waiting on your first feedback</h2>
+			        <p class="center-text larger-text thin">
+			          exQsme is a powerful customer service tool. When your customers provide their feedback, you will be able to....
+			        </p>
+
+			        <div class="decoration deco-0 decoration-small"></div>
+
+			        <div class="one-half-responsive">
+			          <div class="column-home-center one-half">
+			            <i class="ion-ios-checkmark-outline color-green-dark"></i>
+			            <h5 class="thin">Respond Quickly</h5>
+			            <p>Respond to their feedback instantly, directly to their phone.</p>
+			          </div>
+			          <div class="column-home-center one-half last-column">
+			            <i class="ion-jet color-red-dark"></i>
+			            <h5 class="thin">Avoid Negative Reviews</h5>
+			            <p>You can make them happy right now and avoid negative online reviews.</p>
+			          </div>
+			        </div>
+			        <div class="one-half-responsive last-column">
+			          <div class="column-home-center one-half ">
+			            <i class="ion-gear-a color-blue-dark"></i>
+			            <h5 class="thin">Statistics</h5>
+			            <p>exQsme will provide you with statistics to proactively address frequent areas of customer dissatisfaction.</p>
+			          </div>
+			          <div class="column-home-center one-half last-column ">
+			            <i class="ion-help-buoy color-orange-dark"></i>
+			            <h5 class="thin">Private and Individual</h5>
+			            <p>Customers know exQsme connects them privately with managers like yourself!</p>
+			          </div>
+			        </div>
+			        <div class="decoration"></div>
+			      </div>
+				</div>
+
+				<div class="page-userlist">
+					<div id="admin-app-session-list">
+
+					</div>
+				</div>
+			
+				
+			</div>  
+		</div>
+
+	</div>
+
+	<a href="#" class="back-to-top-badge"><i class="ion-ios-arrow-up"></i></a>
+
+</div>
+</body>
+<script type="text/javascript">
+admin_get_session_list();
+sessionsTimer = setInterval(admin_get_session_list, 5000);
+</script>
+</html>

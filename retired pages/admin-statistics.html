@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+<title>exQseme</title>
+    
+<link rel="stylesheet" type="text/css" href="styles/style.css" />
+<link rel="stylesheet" type="text/css" href="styles/skin.css" />
+<link rel="stylesheet" type="text/css" href="styles/framework.css" />
+<link rel="stylesheet" type="text/css" href="styles/ionicons.min.css" />
+    
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript" src="scripts/plugins.js"></script>
+<script type="text/javascript" src="scripts/custom.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+</head>
+
+<body id="admin-home">
+<div id="page-transitions">
+	
+	<div class="sidebars sidebars-light">
+		<div class="sidebar sidebar-left">
+			
+			<div class="menu-options icon-background no-submenu-numbers sidebar-menu">
+				<em class="menu-divider">Navigation</em>
+				<a class="active-item" data-sub="sidebar-sub-1" href="#"><i class="icon-bg bg-blue-dark ion-android-home"></i><span>Account Settings</span><strong class="plushide-animated"></strong></a>
+				<div class="submenu" id="sidebar-sub-1">
+					<a href="user-profile.html"><span>Change Login/Password</span></a>
+					<a href="user-privacy.html"><span>Privacy Settings</span></a>
+					<a href="logout.html"><span>Logout</span></a>
+					
+				</div>
+				
+				<a href="user-contact.html"><i class="icon-bg bg-orange-light ion-edit"></i><span>Contact exQsme</span><i class="ion-record"></i></a>
+				<em class="menu-divider">Copyright <u class="copyright-year"></u>. All rights reserved</em>
+			</div>
+		</div> 
+		
+	</div>
+
+
+	<div class="header header-logo-center header-light">
+		<a href="#" class="header-icon header-icon-1 hamburger-animated open-sidebar-left"></a>
+		<a href="index.html" class="header-logo"></a>  
+	</div>
+
+	<div class="footer-fixed footer-fixed-light">
+		<div class="menu-bottom-bar menu-bottom-bar-five menu-bottom-bar-text light-menu-bar flat-menu-bar full-bottom">
+					<a href="#"></a>
+					<a href="admin-statistics.html" class="border-green-dark selected-bottom-bar"><i class="ion-ios-analytics"></i><em>Statistics</em></a>
+					<a href="admin-home.html" class="border-blue-dark"><i class="ion-ios-email"></i><em>Sessions</em></a>
+					<a href="#" class="border-magenta-dark"><i class="ion-gear-a"></i><em>Go Off Duty</em></a>
+					<a href="#"></a>
+					<div class="clear"></div>
+				</div>                 
+	</div>
+
+	
+	<div id="page-content" class="page-content">	
+		
+
+		<div id="page-content-scroll" class="header-clear"><!--Enables this element to be scrolled --> 
+
+			<div class="content">
+			<br><br>
+			<center><a href="#" class="button button-xs button-teal">1d</a> <a href="#" class="button button-xs button-teal">1w</a> <a href="#" class="button button-xs button-teal">1m</a> <a href="#" class="button button-xs button-teal">6m</a> <a href="#" class="button button-xs button-teal">1yr</a></center>
+				<div id="bar-chart-div" style="margin-left: 0px;"></div>
+			
+				
+			</div>  
+		</div>
+
+	</div>
+
+	<a href="#" class="back-to-top-badge"><i class="ion-ios-arrow-up"></i></a>
+
+</div>
+</body>
+<script type="text/javascript">
+	google.charts.load('current', {packages: ['corechart']});
+	google.charts.setOnLoadCallback(drawBarChart);
+</script>
+</html>

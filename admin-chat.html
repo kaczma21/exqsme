@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<title>exQsme</title>
+    
+<link rel="stylesheet" type="text/css" href="styles/style.css">
+<link rel="stylesheet" type="text/css" href="styles/skin.css">
+<link rel="stylesheet" type="text/css" href="styles/framework.css">
+<link rel="stylesheet" type="text/css" href="styles/ionicons.min.css">
+    
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript" src="scripts/plugins.js"></script>
+<script type="text/javascript" src="scripts/custom.js"></script>
+</head>
+
+<body>
+<div id="page-transitions">
+	
+	
+	<div class="menu-wrapper menu-options menu-light icon-background modal-menu">
+		<a href="#" onClick="admin_closeSession()" class="hide-modal-menu"><i class="icon-bg bg-red-light ion-android-close"></i><span>Close Session with Customer</span><i class="ion-record"></i></a>
+		<a href="#" onClick="admin_sendMessage('Location Request')" class="hide-modal-menu"><i class="icon-bg bg-green-light ion-android-phone-portrait"></i><span>Ask Customer to Enable Location Green Screen</span><i class="ion-record"></i></a>
+		<a href="#" class="hide-modal-menu"><i class="icon-bg bg-orange-light ion-edit"></i><span>Report Inappropriate Messages</span><i class="ion-record"></i></a>
+	</div>
+	
+	<div class="header header-logo-center header-light">
+		<a href="#" onClick="clearInterval(messagesTimer); window.location.href='admin-home.html'" class="header-icon header-icon-1"> <i class="interest-first-icon ion-ios-arrow-back"></i> </a>
+		<a href="admin-home.html" class="header-logo"></a>  
+		<a href="#" class="header-icon header-icon-4 open-modal-menu"><i class="ion-ios-gear"></i></a> 
+	</div>
+
+	<div class="menu-wrapper menu-options menu-light icon-background footer-menu">
+		<div id="admin-message-gifts-div"></div>
+	</div>
+
+	
+
+	<div id="page-content" class="page-content">	
+		<div id="page-content-scroll" class="header-clear-large"><!--Enables this element to be scrolled --> 
+
+			<div class="content no-bottom">    
+				<div class="page-chat no-bottom">
+					<div id='admin-feedback-message-area' style="height: 85vh; overflow-y: scroll !important;">
+					</div>
+					
+					
+					<div class="chat-input-clear"></div>
+				</div>  
+			</div> 
+			
+		</div>  
+	</div>
+
+
+	<div class="chat-input animate-bottom">
+	    <a class="scale-hover open-footer-menu" href="#"><div class="tooltip"><i class="ion-ios-pricetag"></i><span class="tooltiptext" id="messageclose-tooltip">Click to give a gift to the customer.</span></div></a>
+	    <input type="text" id='admin-feedback-message-new' onFocus='this.value=""' value="Enter your message here...">
+	    <a class="scale-hover" href="#" onClick='admin_sendMessage("Message")'>Send</a>
+	</div>  
+	
+</div>
+</body>
+<script type="text/javascript">
+admin_get_messages();
+admin_get_messages_gifts();
+messagesTimer = setInterval(admin_get_messages_new, 5000);
+function show_tooltip() {
+	var session_status = window.localStorage.getItem("admin-feedback-session-status");
+	if(session_status != "Closed") {
+		document.getElementById("messageclose-tooltip").style.opacity = 1;
+	}
+}
+function hide_tooltip() {
+	document.getElementById("messageclose-tooltip").style.opacity = 0;
+}
+setTimeout(show_tooltip, 3000);
+setTimeout(hide_tooltip, 13000);
+</script>
+</html>

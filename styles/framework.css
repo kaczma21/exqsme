@@ -115,7 +115,7 @@ html, body{
 	vertical-align: baseline;
 	outline: none;
 	font-size-adjust: none;
-	-webkit-text-size-adjust: none;
+	-webkit-text-size-adjust: 100%;
 	-moz-text-size-adjust: none;
 	-ms-text-size-adjust: none;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -140,6 +140,7 @@ html, body{
 }
 
 body {
+    -webkit-text-size-adjust: 100%;
 	margin: 0;
 	padding: 0;
 	overflow-x:hidden;
@@ -185,6 +186,20 @@ textarea {
 /*-----------------------------*/
 /*----Page Content Settings----*/
 /*-----------------------------*/
+
+
+.message_icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 20px;
+  color: #fff;
+  line-height: 50px;
+  text-align: center;
+  background: #D3D3D3;
+  position:absolute;
+    display:block;
+}
 
 
 #page-content{margin-bottom:0px;}
@@ -642,24 +657,24 @@ ol ol ol{list-style-type:disc;}
 
 .table-title{
 	font-family:'Roboto', sans-serif;
-	font-size:12px;
+	font-size:16px;
 }
 
 .table-sub-title{
 	font-family:'Roboto', sans-serif;
 	font-weight:bold;
-	font-size:12px;
+	font-size:16px;
 }
 
-.price{	font-size:12px;}
+.price{	font-size:16px;}
 .small-price{
 	position:absolute;
 	margin-left:0px;
-	font-size:10px;
+	font-size:14px;
 	margin-top:-3px!important;
 }
 
-.table {font-size:12px;	margin-bottom:25px;}
+.table {font-size:16px;	margin-bottom:25px;}
 .table th {	padding:21px 25px 22px 25px;}
 
 .table th:first-child{	text-align: center;	padding-left:20px;}
@@ -2013,7 +2028,7 @@ ol ol ol{list-style-type:disc;}
 /*-------------*/
 
 @media(max-width:560px){.demo-socials a{width:100%;}}
-@media(min-width:560px) and (max-width:760px){.demo-socials a{width:45%;}}
+@media(min-width:560px) and (max-width:760px){.demo-socials a{width:40%;}}
 @media(min-width:760px) and (max-width:1280px){.demo-socials a{width:31%;}}
 @media(min-width:1280px){.demo-socials a{width:18%;}}    
 
@@ -4057,7 +4072,7 @@ ul.tabs li.current{
 /*--------------------*/
 
 .profile-page-2-cover{border-bottom:solid 3px #cacaca;}
-.profile-page-2-cover img{margin-bottom:0px;}
+.profile-page-2-cover img{margin-bottom:0px; width:100%; }
 
 .profile-page-2-thumbnail{
     width:130px;
@@ -4416,7 +4431,7 @@ ul.tabs li.current{
 .contactNameField span{	float:right; opacity:0.2;}
 .contactEmailField{	padding-bottom:5px;	font-size:12px;}
 .contactEmailField span{float:right; opacity:0.2;}
-.contactMessageTextarea{padding-bottom:5px;	font-size:12px;}
+.contactMessageTextarea{padding-bottom:5px;	font-size:16px;}
 .contactMessageTextarea span{float:right; opacity:0.2;}
 .formFieldWrap{margin-top:-5px;}
 #contactNameField{text-transform:capitalize;}
@@ -4450,7 +4465,7 @@ ul.tabs li.current{
 .contactFormButton #contactSubmitButton{
     height:50px;
     line-height:50px;
-    font-size:13px;
+    font-size:16px;
     font-weight:400;
 }
 
@@ -4916,7 +4931,7 @@ ul.tabs li.current{
 
 .user-list-1 strong{
     font-weight:500;
-    font-size:16px;
+    font-size:18px;
     padding-left:60px;
     line-height:45px;
     display:inline-block;
@@ -4926,7 +4941,7 @@ ul.tabs li.current{
     width:35px;
     height:35px;
     line-height:36px!important;
-    font-size:12px!important;
+    font-size:16px!important;
     border:none!important;
     text-align:center;
     border-radius:40px;
@@ -4950,7 +4965,7 @@ ul.tabs li.current{
 .user-list-2{height:70px; margin-bottom:20px;}
 .user-list-2 strong{
     font-weight:500;
-    font-size:15px;
+    font-size:18px;
     padding-left:60px;
     line-height:23px;
     position:absolute;
@@ -4965,7 +4980,7 @@ ul.tabs li.current{
     font-size:16px;
     padding-left:60px;
     line-height:65px;
-    font-size:12px;
+    font-size:16px;
     position:absolute;
     font-weight:400;
     font-style:normal;
@@ -4977,7 +4992,7 @@ ul.tabs li.current{
     width:35px;
     height:35px;
     line-height:36px!important;
-    font-size:12px!important;
+    font-size:16px!important;
     border:none!important;
     text-align:center;
     border-radius:40px;
@@ -5002,7 +5017,7 @@ ul.tabs li.current{
 
 .user-list-3 strong{
     font-weight:500;
-    font-size:15px;
+    font-size:18px;
     padding-left:60px;
     line-height:40px;
     position:absolute; 
@@ -5035,7 +5050,7 @@ ul.tabs li.current{
 
 .user-list-4 strong{
     font-weight:500;
-    font-size:15px;
+    font-size:14px;
     padding-left:60px;
     line-height:23px;
     position:absolute;
@@ -5043,10 +5058,9 @@ ul.tabs li.current{
 }
 
 .user-list-4 em{
-    font-size:16px;
+    font-size:14px;
     padding-left:60px;
     line-height:65px;
-    font-size:12px;
     position:absolute;
     font-weight:400;
     font-style:normal;
@@ -5357,7 +5371,7 @@ calendar*{display:block; overflow:hidden;}
 
 .interest-box strong{
     color:#FFFFFF;
-    font-size:18px;
+    font-size:22px;
     font-weight:500;
     padding-left:45px;
 }
@@ -5367,7 +5381,7 @@ calendar*{display:block; overflow:hidden;}
     color:#FFFFFF;
     font-weight:400;
     font-style:normal;
-    font-size:12px;
+    font-size:16px;
     line-height:20px;
     padding-left:45px;
     opacity:0.7;
@@ -5406,7 +5420,7 @@ calendar*{display:block; overflow:hidden;}
 }
 
 .chat-input a:first-child{
-    font-size:12px;
+    font-size:16px;
     position:absolute;
     z-index:10;
     height:35px;
@@ -5423,7 +5437,7 @@ calendar*{display:block; overflow:hidden;}
     width:80px;
     height:35px;
     line-height:35px;
-    font-size:12px;
+    font-size:16px;
     border-radius:40px;
     top:10px;
     margin-right:8px;
@@ -5433,13 +5447,17 @@ calendar*{display:block; overflow:hidden;}
 
 @media(min-width:768px){.chat-input input{width:95%!important;}}
 
-.chat-input input{
+.chat-input textarea{
     width:90%;
+    overflow:scroll;
+    font-size:14px;
     height:35px;
+    line-height: 35px;
+    max-height: 105px;
     margin-top:10px;
     margin-left:22px;
     padding-left:45px;
-    font-size:12px;
+    padding-right:45px;
     -webkit-box-shadow:inset 0 2px 10px 3px rgba(0,0,0,0.1);
             box-shadow:inset 0 2px 10px 3px rgba(0,0,0,0.1);
     -webkit-transition: all 250ms ease;
@@ -5447,6 +5465,67 @@ calendar*{display:block; overflow:hidden;}
     -ms-transition: all 250ms ease;
     -o-transition: all 250ms ease;
     transition: all 250ms ease;
+}
+
+.chat-input textarea:focus{
+    -webkit-transition: all 250ms ease;
+    -moz-transition: all 250ms ease;
+    -ms-transition: all 250ms ease;
+    -o-transition: all 250ms ease;
+    transition: all 250ms ease;
+}
+
+.chat-input input{
+    width:90%;
+    height:35px;
+    max-height: 105px;
+    margin-top:10px;
+    margin-left:22px;
+    padding-left:45px;
+    font-size:16px;
+    -webkit-box-shadow:inset 0 2px 10px 3px rgba(0,0,0,0.1);
+            box-shadow:inset 0 2px 10px 3px rgba(0,0,0,0.1);
+    -webkit-transition: all 250ms ease;
+    -moz-transition: all 250ms ease;
+    -ms-transition: all 250ms ease;
+    -o-transition: all 250ms ease;
+    transition: all 250ms ease;
+}
+
+.tooltip {
+    position: relative;
+}
+
+.tooltip .tooltiptext {
+    opacity: 0;
+    transition: opacity 1s;
+    width: 300px;
+    background-color: black;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -20px;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 5%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
 }
 
 .chat-input input:focus{
@@ -5476,7 +5555,7 @@ calendar*{display:block; overflow:hidden;}
 	display:inline;
 	text-align:left;
 	max-width:75%;
-	font-size:13px;
+	font-size:1em;
     padding:5px 10px;
 	border-radius:10px;
 }
@@ -5496,7 +5575,7 @@ calendar*{display:block; overflow:hidden;}
 	text-align:right;
 	text-align:left;
 	max-width:75%;
-	font-size:13px;
+	font-size:1em;
     padding:5px 10px;
 	border-radius:10px;
 }
